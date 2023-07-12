@@ -21,7 +21,7 @@ data = JSON.parse(response.read_body)
 league_id = data["response"][0]["league"]["id"]
 league_name = data["response"][0]["league"]["name"]
 League.create(id: league_id, league_name: league_name)
-=end
+
 
 
 #remember to take the team id for players
@@ -45,3 +45,22 @@ teams.each do |team_info|
   Table.create(id: team_info['team']['id'], name: team_info['team']['name'], founded: team_info['team']['founded'], league_id: 57, logo: team_info['team']['logo'] )
 end
 
+=end
+
+url = URI("https://api-football-v1.p.rapidapi.com/v3/players?team=33&season=2022")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+request["X-RapidAPI-Key"] = 'd78181db48msh50182f7ef3451f8p1ff6efjsnf9e2245d8348'
+request["X-RapidAPI-Host"] = 'api-football-v1.p.rapidapi.com'
+
+response = http.request(request)
+data = JSON.parse(response.read_body)
+
+#loop the 0 thing
+player_data = data["response"]
+player_data.each do |p_info|
+  Player.create(name: p_info['player']['name'], id: p_info['player']['id'], age: p_info['player']['age'] , nationality: p_info['player']['nationality'], photo: p_info['player']['photo'])
+end
