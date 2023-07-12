@@ -1,9 +1,20 @@
 class TablesController < ApplicationController
   before_action :set_table, only: %i[ show edit update destroy ]
+  before_action :search, only: [:index]
+
+  #method for searching
+  def search
+    @tables = Table.where("name LIKE ?", "%#{params[:q]}%" )
+  end
 
   # GET /tables or /tables.json
   def index
-    @tables = Table.all
+
+    @tables = if params[:q]
+        @tables = Table.where("name LIKE ?", "%#{params[:q]}%" )
+      else
+        Table.all
+      end
   end
 
   # GET /tables/1 or /tables/1.json
