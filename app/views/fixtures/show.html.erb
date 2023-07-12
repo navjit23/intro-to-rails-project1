@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fixture %>
+
+<div>
+  <%= link_to "Edit this fixture", edit_fixture_path(@fixture) %> |
+  <%= link_to "Back to fixtures", fixtures_path %>
+
+  <%= button_to "Destroy this fixture", @fixture, method: :delete %>
+</div>
