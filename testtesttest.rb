@@ -20,6 +20,7 @@ data = JSON.parse(response.read_body)
 team_names = data["response"]
 team_names.each do |teams|
   puts teams["team"]["name"]
+  puts teams["team"]["id"]
 end
 
 # have 10 leagues
