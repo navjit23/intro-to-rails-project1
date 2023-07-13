@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+a{
+  text-decoration: none;
+ }
+a:hover{
+  color: black;
+  font-weight: bolder;
+}
+#nav{
+  background: url('/assets/football_bg.jpg');
+}
