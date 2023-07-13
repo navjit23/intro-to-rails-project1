@@ -2,30 +2,31 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-LEAGUE_IDS = [39, 40]
-TEAM_IDS = [11,2,4]
+LEAGUE_IDS = [39, 78, 140]
+TEAM_IDS = [33, 529,]
+
+
+LEAGUE_IDS.each do |id|
+  url = URI("https://api-football-v1.p.rapidapi.com/v3/leagues?id=#{id}")
+
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+
+  request = Net::HTTP::Get.new(url)
+  request["X-RapidAPI-Key"] = 'd78181db48msh50182f7ef3451f8p1ff6efjsnf9e2245d8348'
+  request["X-RapidAPI-Host"] = 'api-football-v1.p.rapidapi.com'
+
+  response = http.request(request)
+  data = JSON.parse(response.read_body)
+
+  league_id = data["response"][0]["league"]["id"]
+  league_name = data["response"][0]["league"]["name"]
+  League.create(id: league_id, league_name: league_name)
+end
+
+
 
 =begin
-url = URI("https://api-football-v1.p.rapidapi.com/v3/leagues?id=39")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["X-RapidAPI-Key"] = 'd78181db48msh50182f7ef3451f8p1ff6efjsnf9e2245d8348'
-request["X-RapidAPI-Host"] = 'api-football-v1.p.rapidapi.com'
-
-response = http.request(request)
-data = JSON.parse(response.read_body)
-
-league_id = data["response"][0]["league"]["id"]
-league_name = data["response"][0]["league"]["name"]
-League.create(id: league_id, league_name: league_name)
-
-
-
-
-
 #remember to take the team id for players
 
 url_for_team = URI("https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=2022")
@@ -52,7 +53,7 @@ teams.each do |team_info|
 end
 
 
-=end
+
 
 
 url_for_players = URI("https://api-football-v1.p.rapidapi.com/v3/players?team=33&season=2022")
@@ -79,3 +80,4 @@ player_data.each do |p_info|
 end
 
 
+=end
