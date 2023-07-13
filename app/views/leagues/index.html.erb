@@ -7,6 +7,8 @@
     <%= render league %>
     <p>
       <%= link_to "Show this league", league %>
+        <h2><%= link_to league.league_name, league_path(league) %></h2>
+
     </p>
   <% end %>
 </div>

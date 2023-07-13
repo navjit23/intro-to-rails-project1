@@ -8,6 +8,8 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/1 or /leagues/1.json
   def show
+    @league = League.find(params[:id])
+    @tables = @league.tables
   end
 
   # GET /leagues/new

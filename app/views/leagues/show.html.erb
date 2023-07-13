@@ -8,3 +8,16 @@
 
   <%= button_to "Destroy this league", @league, method: :delete %>
 </div>
+
+<h1><%= @league.league_name %> League</h1>
+
+<h2>Tables</h2>
+<% if @tables.any? %>
+  <ul>
+    <% @tables.each do |table| %>
+      <li><%= table.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tables found for this league.</p>
+<% end %>
