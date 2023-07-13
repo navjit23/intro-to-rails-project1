@@ -1,10 +1,22 @@
 <p style="color: green"><%= notice %></p>
+<div class="container ">
+  <%= render @table %>
 
-<%= render @table %>
+  <div>
+    <%= link_to "Edit this table", edit_table_path(@table) %> |
+    <%= link_to "Back to tables", tables_path %>
 
-<div>
-  <%= link_to "Edit this table", edit_table_path(@table) %> |
-  <%= link_to "Back to tables", tables_path %>
+    <%= button_to "Destroy this table", @table, method: :delete %>
+  </div>
 
-  <%= button_to "Destroy this table", @table, method: :delete %>
-</div>
+  <div class="container border bg-secondary m-3 p-3">
+  <% if @players.any? %>
+    <ul>
+      <% @players.each do |player| %>
+        <li><h3 ><%= link_to player.name, player_path(player) ,class: "text-dark"%></h3></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No Player found for this Team.</p>
+  <% end %>
+  </div>

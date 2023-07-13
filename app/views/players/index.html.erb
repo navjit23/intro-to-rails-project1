@@ -1,14 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="container">
 <h1>Players</h1>
 
-<div id="players">
+<div id="players" class="container border">
   <% @players.each do |player| %>
+  <div class="container border">
     <%= render player %>
     <p>
       <%= link_to "Show this player", player %>
     </p>
+    </div>
   <% end %>
 </div>
 <%= will_paginate @players %>
 <%= link_to "New player", new_player_path %>
+</div>

@@ -1,16 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Leagues</h1>
+<div class="container">
+<h1 class="mx-auto">Leagues</h1>
 
-<div id="leagues">
+<div id="leagues" class="container border">
   <% @leagues.each do |league| %>
-    <%= render league %>
-    <p>
-      <%= link_to "Show this league", league %>
-        <h2><%= link_to league.league_name, league_path(league) %></h2>
-
-    </p>
+    <div class="container border">
+      <h2><%= link_to league.league_name, league_path(league) %></h2>
+    </div>
   <% end %>
+
 </div>
 
 <%= link_to "New league", new_league_path %>
+</div>

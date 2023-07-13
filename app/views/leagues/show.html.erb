@@ -1,23 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @league %>
+<div class="container ">
+<h1><%= @league.league_name %> </h1>
 
-<div>
-  <%= link_to "Edit this league", edit_league_path(@league) %> |
-  <%= link_to "Back to leagues", leagues_path %>
-
-  <%= button_to "Destroy this league", @league, method: :delete %>
-</div>
-
-<h1><%= @league.league_name %> League</h1>
-
-<h2>Tables</h2>
+<h2>Teams:</h2>
+<div class="container border bg-secondary m-3 p-3">
 <% if @tables.any? %>
   <ul>
     <% @tables.each do |table| %>
-      <li><%= table.name %></li>
+      <li><h3 class="text-warning"><%= link_to table.name, table_path(table), class:"text-warning link-underline-opacity-0" %></h3></li>
     <% end %>
   </ul>
 <% else %>
   <p>No tables found for this league.</p>
 <% end %>
+</div>
+
+</div>

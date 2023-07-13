@@ -22,6 +22,8 @@ class TablesController < ApplicationController
 
   # GET /tables/1 or /tables/1.json
   def show
+    @table = Table.find(params[:id])
+    @players = @table.players
   end
 
   # GET /tables/new
