@@ -2,10 +2,13 @@
 
 <div class="container border">
   <%= render @player %>
-
   <div>
 
     <%= link_to "Back to players", players_path %>
+    <br>
+    <% @team.each do |team| %>
+      <h2>Team: <%= link_to team.name, team%></h2>
+    <% end %>
 
 
   </div>

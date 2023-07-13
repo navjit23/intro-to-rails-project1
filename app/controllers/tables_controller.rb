@@ -24,6 +24,7 @@ class TablesController < ApplicationController
   def show
     @table = Table.find(params[:id])
     @players = @table.players
+    @league = League.find_by(id: @table.league_id)
   end
 
   # GET /tables/new

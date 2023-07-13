@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1 or /players/1.json
   def show
+    @team = Table.where(id: @player.table)
   end
 
   # GET /players/new

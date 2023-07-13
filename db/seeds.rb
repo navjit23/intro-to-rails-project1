@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 
 LEAGUE_IDS = [39, 78, 140]
-TEAM_IDS = [33, 40, 529, 530, 541, 50]
+TEAM_IDS = [33, 34, 42, 47, 40, 49, 157, 165, 529, 530, 541, 50]
 
 
 LEAGUE_IDS.each do |id|
@@ -27,7 +27,7 @@ LEAGUE_IDS.each do |id|
 
 
 
-  #remember to take the team id for players
+
 
   url_for_team = URI("https://api-football-v1.p.rapidapi.com/v3/teams?league=#{id}&season=2022")
 
@@ -41,7 +41,6 @@ LEAGUE_IDS.each do |id|
   response1 = http1.request(request1)
   data1 = JSON.parse(response1.read_body)
 
-  #loop the 0 thing
 
   teams = data1["response"]
   teams.each do |team_info|

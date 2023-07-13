@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 <div class="container ">
   <%= render @table %>
+  <% if @league %>
+    <h2><%= link_to @league.league_name, @league %></h2>
+  <% end %>
+
 
   <div>
 

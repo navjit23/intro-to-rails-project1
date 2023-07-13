@@ -7,4 +7,7 @@ For this project we will need 3 different tables named: leagues, tables, and pla
 <p>
 We have used 3 different endpoints from the API above that provide us data about the different leagues, different teams and the different players
 All the data fetched has unique id which makes it possible to relate and combine</p>
+<p>Data source 1 fetches the leagues alog with the league_id from the api</p>
+<p>Data Source 2 fetches the team information and is related to the leagues by league_id FK</p>
+<p>Data Source 3 fetches the player data and is related by table_id FK</p>
 <%= image_tag 'erd.png' , alt: "image" %>
