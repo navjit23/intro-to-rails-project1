@@ -5,7 +5,7 @@
 <ol>
 <% @tables.each do |table| %>
   <li>
-    <%= table.name %><br>
+    <h3 class="text-warning"><%= link_to table.name, table_path(table), class:"text-warning link-underline-opacity-0" %></h3>
   </li>
 <% end %>
 </ol>
