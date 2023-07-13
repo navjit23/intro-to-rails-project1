@@ -14,6 +14,7 @@ gem "sqlite3", "~> 1.4"
 
 gem 'bootstrap', '~> 5.0', '>= 5.0.1'
 gem 'jquery-rails'
+gem 'will_paginate'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

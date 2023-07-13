@@ -4,8 +4,11 @@ class TablesController < ApplicationController
 
   #method for searching
   def search
-    @tables = Table.where("name LIKE ?", "%#{params[:q]}%" )
+    @tables = Table.includes(:league)
+    @tables = @tables.where(league_id: params[:league_id]) if params[:league_id].present?
+    @tables = @tables.where('name LIKE ?', "%#{params[:table_name]}%") if params[:table_name].present?
   end
+
 
   # GET /tables or /tables.json
   def index
